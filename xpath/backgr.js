@@ -10,22 +10,20 @@ chrome.runtime.onMessage.addListener(handleRequest);
 
 // Set up context menu tree at install time.
 chrome.runtime.onInstalled.addListener(function() {
-	chrome.contextMenus.create({"title": "Datacol xpath", "contexts":["all"],
+	chrome.contextMenus.create({"title": "Copy xpath to clipboard", "contexts":["all"],
 		"id": "xpathclip"});
 });
 
-// The onClicked callback function.
 
-var vxpath = '';
 
 //Click menu item
 function onClickHandler(info, tab) {
 	if (info.menuItemId == "xpathclip") {
-		chrome.tabs.getSelected(null, function (tab) { //выбирается ид открытого таба, выполняется коллбек с ним
-			chrome.runtime.sendMessage({ type: 'calcBar', tabid: tab.id }); //запрос  на сообщение
+		chrome.tabs.getSelected(null, function (tab) {
+			chrome.runtime.sendMessage({ type: 'calcBar', tabid: tab.id });
 		});
-		//chrome.runtime.sendMessage({type: 'calcBar'});
 	}
 }
 
+// The onClicked callback function.
 chrome.contextMenus.onClicked.addListener(onClickHandler);
