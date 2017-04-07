@@ -1,0 +1,20 @@
+{
+	"name": "Get xpath",
+	"description": "Extract xpath and copy to the clipboard in one click.",
+	"background": {
+		"persistent": false,
+		"scripts": [ "backgr.js" ]
+	},
+	"permissions": ["contextMenus", "tabs"],
+	"icons": {
+			"128": "128.png"
+	},
+	"content_scripts": [ {
+		"css": [ "content.css" ],
+		"js": [ "content.js" ],
+		"matches": [ "\u003Call_urls>" ]
+	} ],
+	"manifest_version": 2,
+	"version": "1.0.0.5",
+	"web_accessible_resources": [ "bar.html", "bar.js", "bar.css" ]
+}
